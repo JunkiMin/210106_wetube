@@ -2,13 +2,19 @@
   "name": "200106_wetube",
   "version": "1.0.0",
   "description": "Cloning Youtube with JS",
-  "main": "index.js", 
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --legacy-watch --exec babel-node index.js --delay 2"
   },
   "author": "Jun",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.11",
+    "nodemon": "^2.0.6"
   }
 }
