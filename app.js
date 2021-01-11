@@ -9,34 +9,22 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
+import { localsMiddleWare } from "./middlewares";
 
 
-// var express = require('express');
+
+
 var app = express();
 
-
-// ▲ //function handleProfile(req,res){
-//     res.send("you are on my profile");
-// }
-
-// const betweenHome = (req,res,next) => {
-    
-//     console.log("i'm between")
-//     // console.log(next)
-//     next();
-
-// };
-
-// app.use(betweenHome);
-
-
+app.use(helmet());
 app.set("view engine","pug"); // view파일들의 위치에 대한 기본적인 설정이 들어있다.
-
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended:true } ));
-app.use(helmet());
 app.use(morgan("dev"));
+
+
+app.use(localsMiddleWare);
 app.use(routes.users,userRouter);    //app.use("/user",userRouter);
 app.use(routes.videos,videoRouter);
 app.use(routes.home,globalRouter); 

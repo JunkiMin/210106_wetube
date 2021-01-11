@@ -11,11 +11,10 @@ const userRouter = express.Router();
 
 
 
-userRouter.get(route.users,users);
-userRouter.get(route.userDetail,userDetail);
+userRouter.get(route.home,users);
 userRouter.get(route.editProfile,editProfile);
 userRouter.get(route.changePassword,changePassword);
-
+userRouter.get(route.userDetail,userDetail);
 
 export default userRouter;
 
