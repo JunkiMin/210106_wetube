@@ -5,7 +5,7 @@ Cloning Youtube
 ## Pages:
     -[ ] Home
     -[ ] Join
-    -[ ] Login
+    -[x] Login
     -[X] Search
     -[ ] User Detail
     -[ ] Edit Profile
