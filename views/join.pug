@@ -2,11 +2,12 @@
 extends layouts/main
 
 block content
-    .join
-        form(action="/login", method="post")
+    .form-container
+        form(action=routes.login, method="post")
             input(type="text",name="name",placeholder="Write your full name")
             input(type="email",name="email",placeholder="Email")
             input(type="password",name="password",placeholder="password")
-            input(type="password",name="password",placeholder="password")
-            input(type="submit",value="Log In")
+            input(type="password",name="password",placeholder="verified password")
+            input(type="submit",value="Join Now")
+        include partials/socialLogin
             

@@ -16,7 +16,7 @@ import { localsMiddleWare } from "./middlewares";
 
 var app = express();
 
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false, }));
 app.set("view engine","pug"); // view파일들의 위치에 대한 기본적인 설정이 들어있다.
 app.use(cookieParser());
 app.use(bodyParser.json());

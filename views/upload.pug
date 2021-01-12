@@ -2,4 +2,11 @@
 extends layouts/main
 
 block content
-    p #{pageTitle}
+    .form-container
+        form(action=routes.editProfile,method="post")
+            lable(for="Video") Video File
+            input(type ="file",id="video",name="video")
+            input(type="text",placeholder="Title",neme="title")
+            input(type="email",placeholder="Description",name="description")
+            input(type="submit",value="Upload Video")
+        

@@ -1,7 +1,18 @@
 //- extends layouts/main.pug
 extends layouts/main
+include mixins/videoBlock
 
+//-We call it iteration (이터레이션) 반복 each - in
 block content
-    .form__container
-        form(action="/login",method="post")
-            input(type="email")
+    //- .videos
+    //-     each video in videoData
+    //-         h1=video.videoFiles
+    .vidoes
+        each video in videoData
+            +videoBlock({
+                title:video.title,
+                views:video.views,
+                videoFile:video.videoFile
+            })
+            
+        
