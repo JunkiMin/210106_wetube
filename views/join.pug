@@ -2,4 +2,11 @@
 extends layouts/main
 
 block content
-    p #{pageTitle}
+    .join
+        form(action="/login", method="post")
+            input(type="text",name="name",placeholder="Write your full name")
+            input(type="email",name="email",placeholder="Email")
+            input(type="password",name="password",placeholder="password")
+            input(type="password",name="password",placeholder="password")
+            input(type="submit",value="Log In")
+            
