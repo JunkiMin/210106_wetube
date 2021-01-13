@@ -1,5 +1,18 @@
 //- extends layouts/main.pug
 extends layouts/main
+include mixins/videoBlock
 
 block content
-    h3 Searching by #{searchingBy}
+    .search__header
+        h3 Searching by #{searchingBy}
+        
+    .search__video
+        each video in videoData
+            +videoBlock({
+                title:video.titile,
+                views:video.views,
+                videoFile:video.videoFile,
+                description:video.description
+            })
+            
+

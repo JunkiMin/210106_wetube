@@ -13,13 +13,16 @@ export const search = (req,res) => {
         query: {term:searchingBy}
     } =req;
     console.log(searchingBy);
-    res.render("search",{pageTitle : "search", searchingBy});
+    res.render("search",{pageTitle : "search", searchingBy,videoData});
     
 
 };
 
 
 export const videos = (req,res) => res.render("videos",{pageTitle : "videos"});
+
+
+
 export const upload = (req,res) => res.render("upload",{pageTitle : "upload"});
 export const videoDetail = (req,res) => res.render("videoDetail",{pageTitle : "videoDetail" });
 export const editVideo = (req,res) => res.render("editVideo",{pageTitle : "editVideo"});

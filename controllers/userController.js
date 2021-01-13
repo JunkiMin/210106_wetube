@@ -1,4 +1,26 @@
-export const join = (req,res)=>res.render("join",{pageTitle : "join"}); 
+import route from "../routes"; 
+export const getJoin = (req,res) =>res.render("join",{pageTitle : "join"});
+export const postJoin = (req,res)=>{
+    console.log(req.body);
+    
+const {
+    body:{name,email,password,password2}
+} = req;
+
+if(password!==password2){
+    res.status(400)
+    res.render("join",{pageTitle : "join"});
+} else{
+    // To do:  Register User
+    // To DO:  log user
+    res.redirect(route.home)
+}
+
+// res.render("join",{pageTitle : "join"}); => why did he move this into if statement?
+
+};
+
+
 export const login = (req,res)=>res.render("login",{pageTitle : "LOGIN"});
 export const logout = (req,res)=>res.render("logout",{pageTitle : "LOGOUT"});
 export const users = (req,res)=>res.render("users",{pageTitle : "users"});
