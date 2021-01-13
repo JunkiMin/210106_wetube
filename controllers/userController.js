@@ -21,7 +21,9 @@ if(password!==password2){
 };
 
 
-export const login = (req,res)=>res.render("login",{pageTitle : "LOGIN"});
+export const getLogin = (req,res)=>res.render("login",{pageTitle : "LOGIN"});
+export const postLogin = (req,res)=>res.redirect(route.home);
+
 export const logout = (req,res)=>res.render("logout",{pageTitle : "LOGOUT"});
 export const users = (req,res)=>res.render("users",{pageTitle : "users"});
 export const editProfile = (req,res)=>res.render("editProfile",{pageTitle : "editProfile"});
