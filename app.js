@@ -14,6 +14,7 @@ import { localsMiddleWare } from "./middlewares";
 
 
 
+
 var app = express();
 
 app.use(helmet({ contentSecurityPolicy: false, }));
@@ -26,7 +27,7 @@ app.use(morgan("dev"));
 
 app.use(localsMiddleWare);
 app.use(routes.users,userRouter);    //app.use("/user",userRouter);
-app.use(routes.videos,videoRouter);
+app.use(routes.videos,videoRouter); //app.use("/user",userRouter);
 app.use(routes.home,globalRouter); 
 
 //aplication  get("directory(위치)","보낼놈(주로 CSS html임")

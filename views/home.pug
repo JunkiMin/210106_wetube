@@ -10,6 +10,7 @@ block content
     .vidoes
         each video in videoData
             +videoBlock({
+                id:video.id,
                 title:video.titile,
                 views:video.views,
                 videoFile:video.videoFile,
