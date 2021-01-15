@@ -1,7 +1,7 @@
 import route from "./routes";
 import multer from "multer";
 
-const multerVideo = multer({dest:"videos/"})
+const multerVideo = multer({dest:"uploads/videos/"}) // If you write "/uploads/videos/", It porinted your root directory maybe C:\
 
 export const localsMiddleWare = (req,res,next) => {
     res.locals.siteName = "WeTube!";

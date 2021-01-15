@@ -44,14 +44,24 @@ const route = {
     videos: VIDEOS,
     upload:UPLOAD,
     videoDetail:id => {
+        // console.log("리턴합니다.","return /videos/${id}")
+        // return `/videos/${id}`;
         if (id) {
+          console.log("리턴합니다.","return /videos/${id}")
           return `/videos/${id}`;
         } else {
+          console.log("이프 엘스 케이스 VIDEO_DETAIL",VIDEO_DETAIL);
           return VIDEO_DETAIL;
-        }
+        } // 이해가 안가는데 일단 둡니다. else없이는 함수가 작동안함.;; :id를 어떻게 상호작용하지는 지 잘 알아보아야할 필요가 있다.
       },
 
-    editVideo: EDIT_VIDEO,
+    editVideo: id => {
+      if(id){
+        return `/videos/${id}/edit`;
+      }else{
+        return EDIT_VIDEO;
+      }
+    },
     deleteVideo:DELETE_VIDEO
 }; //
 

@@ -3,3 +3,21 @@ extends layouts/main
 
 block content
     p #{pageTitle}
+    .video__player 
+        video(src=`/${video.fileUrl}`,controls=true)
+            //- it comes from Video.js Nomadcoder lecture #3.8 //
+    .video__info
+        a(href=routes.editVideo(video.id)) Edit video  
+        h5.video__title= video.title
+        span.video__views=video.views
+        p.video__description=video.description    
+
+    //- .vidoes
+    //-     each video in videoData
+    //-         +videoBlock({
+    //-             id:video.id,
+    //-             title:video.titile,
+    //-             views:video.views,
+    //-             videoFile:video.fileUrl,
+    //-             description:video.description
+    //-         })

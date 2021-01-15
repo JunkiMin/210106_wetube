@@ -8,10 +8,13 @@ export const home = async(req,res)=>{
     
     try{ //try and Catch를 쓰는이유 조금더 자세히 생가갷보기
         const videoData = await Video.find({});
-        console.log(videoData);
+        res.render("home",{pageTitle : "home", videoData});
+        
+        //console.log(videoData);
     }catch(error){
         console.log(error);
-        res.render("home",{pageTitle : "home", videoData});
+        
+        res.render("home",{pageTitle : "home", videos:[] });
     }
 
 };
@@ -55,6 +58,47 @@ const newVideo =await Video.create({
 };
 
 
-export const videoDetail = (req,res) => res.render("videoDetail",{pageTitle : "videoDetail" });
-export const editVideo = (req,res) => res.render("editVideo",{pageTitle : "editVideo"});
+export const videoDetail = async(req,res) =>  {
+    const{
+        params:{id}
+    }=req;
+
+    try {    console.log(req.params);
+        const video = await Video.findById(id);
+        console.log("Video Value : ",video)
+        res.render("videoDetail",{pageTitle : "videoDetail",video });
+    }catch(error){
+        console.log("에러임",error);
+        res.redirect(route.home);
+    
+    }
+
+
+};
+
+export const getEditVideo = async (req,res) => {
+    
+    const{
+        params: {id}
+    }=req;
+    try{
+        const video = await Video.findById(id);
+        res.render("editVideo",{pageTitle : `Edit ${video.title}`,video});
+    }catch(error){
+        res.redirect(route.home);
+    }
+};
+
+
+export const postEditVideo = (req,res) => {
+
+    const{
+        params: {id}
+    }=req;
+    
+};
+
+
+
+
 export const deleteVideo = (req,res) => res.render("deleteVideo",{pageTitle : "deleteVideo"});

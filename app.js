@@ -19,6 +19,7 @@ var app = express();
 
 app.use(helmet({ contentSecurityPolicy: false, }));
 app.set("view engine","pug"); // view파일들의 위치에 대한 기본적인 설정이 들어있다.
+app.use("/uploads", express.static("uploads"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended:true } ));
@@ -26,6 +27,7 @@ app.use(morgan("dev"));
 
 
 app.use(localsMiddleWare);
+
 app.use(routes.users,userRouter);    //app.use("/user",userRouter);
 app.use(routes.videos,videoRouter); //app.use("/user",userRouter);
 app.use(routes.home,globalRouter); 
