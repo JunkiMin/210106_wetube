@@ -42,7 +42,12 @@ export const postUpload = async(req,res) => {
     const {
         body: { title,description},
         file: {path}//:{file,title,description}
-    }=req;
+    }=req; // 결국은 title = req.body.title ,  = path = req.file.path
+
+    console.log("postUpload title and path :",title,path)
+    console.log("req.body.title====>",req.body.title)
+    console.log("req.file.path====>",req.file)
+    //console.log("postUpload req=====>",req)
 
 const newVideo =await Video.create({
     fileUrl:path,
@@ -78,7 +83,7 @@ export const videoDetail = async(req,res) =>  {
 export const getEditVideo = async (req,res) => {
     
     const{
-        params: {id}
+        params: {id} // params 은 존재하지 않고 id만 존재하게됨
     }=req;
     try{
         const video = await Video.findById(id);
@@ -89,15 +94,35 @@ export const getEditVideo = async (req,res) => {
 };
 
 
-export const postEditVideo = (req,res) => {
+export const postEditVideo = async(req,res) => {
+    const {
+        params: { id },
+        body: { title, description }
+      } = req;
+      try {
+        await Video.findOneAndUpdate({ _id: id }, { title, description });
+        res.redirect(route.videoDetail(id));
+      } catch (error) {
+        res.redirect(route.home);
+      }
+    };
+
+
+
+
+export const deleteVideo = async (req,res) => {
 
     const{
-        params: {id}
+        params: {id} // params 은 존재하지 않고 id만 존재하게됨
     }=req;
-    
+
+
+    try{
+        await Video.findOneAndRemove({ _id: id });
+
+    }catch (error){   console.log(error);
+    }
+
+    res.redirect(route.home);
+    // res.render("deleteVideo",{pageTitle : "deleteVideo"});
 };
-
-
-
-
-export const deleteVideo = (req,res) => res.render("deleteVideo",{pageTitle : "deleteVideo"});

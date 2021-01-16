@@ -32,13 +32,20 @@ const route = {
     logout: LOGOUT,
     search: SEARCH,
     users:USERS,
-    userDetail: id => {
-        if (id) {
-          return `/users/${id}`;
-        } else {
-          return USER_DETAIL;
-        }
-      },
+    userDetail (id) { 
+            if (id) {
+             return `/users/${id}`;
+           } else {
+             return USER_DETAIL;
+           }
+         },
+    // userDetail: id => {
+    //     if (id) {
+    //       return `/users/${id}`;
+    //     } else {
+    //       return USER_DETAIL;
+    //     }
+    //   },
     editProfile: EDIT_PROFILE,
     changePassword: CHANGE_PASSWORD,
     videos: VIDEOS,
@@ -47,7 +54,7 @@ const route = {
         // console.log("리턴합니다.","return /videos/${id}")
         // return `/videos/${id}`;
         if (id) {
-          console.log("리턴합니다.","return /videos/${id}")
+          console.log("리턴합니다.",`return /videos/${id}`)
           return `/videos/${id}`;
         } else {
           console.log("이프 엘스 케이스 VIDEO_DETAIL",VIDEO_DETAIL);
@@ -56,13 +63,25 @@ const route = {
       },
 
     editVideo: id => {
-      if(id){
+      if (id) {
+
+        console.log("수정합니다.",`/videos/${id}/edit`)
         return `/videos/${id}/edit`;
       }else{
         return EDIT_VIDEO;
       }
     },
-    deleteVideo:DELETE_VIDEO
+    
+
+
+
+    deleteVideo: (id) => {
+      if(id){
+        return `/videos/${id}/delete`
+      }else{
+        return DELETE_VIDEO
+      }
+    }
 }; //
 
 export default route;
