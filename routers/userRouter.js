@@ -15,7 +15,7 @@ userRouter.get(route.home,users);
 userRouter.get(route.editProfile,editProfile);
 userRouter.get(route.changePassword,changePassword);
 userRouter.get(route.userDetail(),userDetail);
-
+console.log("UserRouter is working now");
 export default userRouter;
 
 

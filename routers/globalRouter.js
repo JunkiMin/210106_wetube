@@ -17,6 +17,6 @@ globalRouter.get(routes.search,search)
 // globalRouter.get(routes.videoDetail,videoDetail);
 // globalRouter.get(routes.editVideo,editVideo);
 // globalRouter.get(routes.deleteVideo,deleteVideo);
-
+console.log("GlobalRouter is working now");
 
 export default globalRouter;

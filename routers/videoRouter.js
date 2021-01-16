@@ -19,5 +19,5 @@ videoRouter.get( route.videoDetail(),videoDetail ); // /videos/vdetail
 videoRouter.get( route.editVideo(),getEditVideo ) ; // /videos/user :id/edit
 videoRouter.post( route.editVideo(),postEditVideo ) ; // /videos/user :id/edit
 videoRouter.get( route.deleteVideo,deleteVideo ) ; // videos/user :id/delete
-
+console.log("VIDEOROUTER is working now");
 export default videoRouter;
