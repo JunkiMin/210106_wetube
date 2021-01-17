@@ -14,18 +14,32 @@ export const home = async(req,res)=>{
     }catch(error){
         console.log(error);
         
-        res.render("home",{pageTitle : "home", videos:[] });
+        res.render("home",{pageTitle : "home", videoData:[] });
     }
 
 };
 
 
 
-export const search = (req,res) => {
+export const search = async(req,res) => {
     // const searchingBy = req.query.term; = > ES6 이전방식
     const {
         query: {term:searchingBy}
     } =req;
+
+    let videoData = [];
+
+    try{
+        videoData = await Video.find({
+            title:{$regex:searchingBy, $options:"i"}
+    });
+
+    }catch(error){
+        console.log("Search Error ===>",error);
+    };
+
+
+
     console.log(searchingBy);
     res.render("search",{pageTitle : "search", searchingBy,videoData});
     

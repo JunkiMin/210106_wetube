@@ -7,6 +7,8 @@ block content
         h3 Searching by #{searchingBy}
         
     .search__video
+        if videoData.length === 0
+            h5 No Video file
         each video in videoData
             +videoBlock({
                 title:video.titile,
@@ -16,3 +18,4 @@ block content
             })
             
 
+//- VideoData는 어디서 참고를 하는가..
