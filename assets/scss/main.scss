@@ -12,7 +12,66 @@ body {
 
 main {
   width: 100%;
-  max-width: 1400px;
+  max-width: 2000px;
   margin: 0 auto;
   min-height: 70vh;
-}
+
+  .videos {
+    
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+
+    .videoBlock{
+      border: 2px solid darkblue;
+      padding: 10px;
+      max-width: 500px; //500px 25%
+      min-width: 300px; // 300px 18%
+      
+        video {
+          max-width:100%
+        }
+
+    }
+        
+
+      }
+
+  }
+
+
+
+  button,
+  input:not([type="file"]),
+  textarea,
+  .fileUpload {
+    padding: 7px 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: $black;
+    font-weight: 600;
+    background-color: white;
+    max-width: 320px;
+    resize: none;
+    &::placeholder {
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  button {
+    border: none;
+    background-color: #3498db;
+    color: white;
+  }
+  
+  button.delete {
+    background-color: $dark-red;
+  }
+  
+  button,
+  input[type="submit"] {
+    cursor: pointer;
+  }

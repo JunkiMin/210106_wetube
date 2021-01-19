@@ -1,5 +1,6 @@
-import route from "./routes";
 import multer from "multer";
+import route from "./routes";
+
 
 const multerVideo = multer({dest:"uploads/videos/"}) // If you write "/uploads/videos/", It porinted your root directory maybe C:\
 
@@ -10,7 +11,7 @@ export const localsMiddleWare = (req,res,next) => {
     res.locals.routes = route;
     res.locals.test= "this is test text for localsMiddleWare"
     res.locals.user={
-        isAuthenticated:true,
+        isAuthenticated: true,
         id:1
     };
     console.log("localmiddleware");

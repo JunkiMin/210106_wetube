@@ -4,8 +4,8 @@
   "description": "Cloning Youtube with JS",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --legacy-watch --exec babel-node init.js --delay 5",
-    "dev:server": "nodemon --legacy-watch --exec babel-node init.js --delay 5",
+    "start": "nodemon --legacy-watch --exec babel-node init.js --delay 2 --ignore scss",
+    "dev:server": "nodemon --legacy-watch --exec babel-node init.js --delay 2--ignore scss",
     "dev:assets": "cross-env WEBPACK_ENV=development webpack -w",
     "build:assets": "cross-env WEBPACK_ENV=production webpack"
   },

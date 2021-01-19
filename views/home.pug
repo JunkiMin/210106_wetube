@@ -7,14 +7,15 @@ block content
     //- .videos
     //-     each video in videoData
     //-         h1=video.videoFiles
-    .vidoes
+    .videos
         each video in videoData
             +videoBlock({
                 id:video.id,
-                title:video.titile,
+                title:video.title,
                 views:video.views,
                 videoFile:video.fileUrl,
                 description:video.description
             })
             
+
         

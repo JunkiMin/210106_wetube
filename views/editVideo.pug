@@ -4,11 +4,13 @@ extends layouts/main
 block content
     .form-container
         form(action= routes.editVideo(video.id),method="post")
-            input(type="text",placeholder="Title",neme="title",value=video.title)
+            input(type="text",placeholder="Title",name="title", value=video.title)
                 //-video.title을 쓸수있는 이유는 우리가 videocontroller/res.render를 이용해서 에서 쓸수있도록 해줬기 때문. 
             textarea(placeholder="Description",name="description")= video.description
             input(type="submit",value="Update Video")
-        a.form-container__link(href=routes.deleteVideo(video.id)) Delete Video
+        a.form-container__link(href=routes.deleteVideo(video.id))
+            button.delete Delete Video 
+
 //- extends layouts/main
 
 //- block content
