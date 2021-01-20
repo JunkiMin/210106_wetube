@@ -64,7 +64,6 @@ const route = {
 
     editVideo: id => {
       if (id) {
-
         console.log("수정합니다.",`/videos/${id}/edit`)
         return `/videos/${id}/edit`;
       }else{

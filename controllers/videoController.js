@@ -54,13 +54,15 @@ export const getUpload = (req,res) => res.render("upload",{pageTitle : "upload"}
 
 export const postUpload = async(req,res) => {
     const {
-        body: { title,description},
+        body: { title , description },
         file: {path}//:{file,title,description}
     }=req; // 결국은 title = req.body.title ,  = path = req.file.path
 
+
     console.log("postUpload title and path :",title,path)
     console.log("req.body.title====>",req.body.title)
-    console.log("req.file.path====>",req.file)
+    console.log("req.file.path====>",req)
+    //console.log("req.file.fieldname===>",fieldname)
     //console.log("postUpload req=====>",req)
 
 const newVideo =await Video.create({
@@ -70,8 +72,9 @@ const newVideo =await Video.create({
 })
  //To do: Upload and save Video
    // console.log(body.title,file.path)
-    console.log(newVideo)
-    res.redirect(route.videoDetail(newVideo.id));
+    console.log("newvideo===>",newVideo)
+    res.redirect(route.videoDetail(newVideo._id));
+
 
 };
 
@@ -80,6 +83,7 @@ export const videoDetail = async(req,res) =>  {
     const{
         params:{id}
     }=req;
+
 
     try {    console.log(req.params);
         const video = await Video.findById(id);
