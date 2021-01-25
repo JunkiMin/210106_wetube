@@ -1,4 +1,4 @@
-import { userDetail } from "./controllers/userController";
+//import { userDetail } from "./controllers/userController";
 
 //Global
 const HOME = "/";
@@ -13,6 +13,7 @@ const USERS = "/users";
 const EDIT_PROFILE = "/editProfile";
 const CHANGE_PASSWORD = "/changePassword"; 
 const USER_DETAIL = "/:id";
+const ME = "/me";
 ;
 
 
@@ -80,7 +81,10 @@ const route = {
       }else{
         return DELETE_VIDEO
       }
-    }
+    },
+
+
+    me: ME
 }; //
 
 export default route;
