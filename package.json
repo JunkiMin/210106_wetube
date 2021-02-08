@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --legacy-watch --exec babel-node init.js --delay 2 --ignore scss",
-    "dev:server": "nodemon --legacy-watch --exec babel-node init.js --delay 2--ignore scss",
+    "K": "babel-node init.js",
+    "dev:server": "babel-node init.js",
     "dev:assets": "cross-env WEBPACK_ENV=development webpack -w",
     "build:assets": "cross-env WEBPACK_ENV=production webpack"
   },

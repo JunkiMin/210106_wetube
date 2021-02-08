@@ -1,6 +1,7 @@
+import express from "express";
 import multer from "multer";
 import route from "./routes";
-import express from "express";
+
 
 const storage = multer.memoryStorage();
 const fileUpload = multer({storage});

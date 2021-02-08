@@ -57,8 +57,13 @@ export const logout = (req, res) => {
 
 };
 
-export const getMe = (req, res) => {
-  res.render("userDetail", { pageTitle: "User Detail", user: req.user });
+export const getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).populate("videos");
+    res.render("userDetail", { pageTitle: "User Detail", user });
+  } catch (error) {
+    res.redirect(route.home);
+  }
 };
 
 export const users = (req, res) => res.render("users", { pageTitle: "users" });
@@ -119,14 +124,17 @@ export const postEditProfile = async (req, res) => {
 
 
 
-
+// 과연 유저디테일이 쓸모가 있는가?
 export const userDetail = async (req, res) => {
+  console.log("----------------------------------------------------------");
   const {
     params: { id }
   } = req;
   try {
     const user = await User.findById(id).populate("videos");
+    console.log("user in userDetail====>> \n",user)
     res.render("userDetail", { pageTitle: "User Detail", user });
+    
   } catch (error) {
     req.flash("error", "User not found");
     res.redirect(route.home);

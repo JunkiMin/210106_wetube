@@ -3,32 +3,42 @@
   flex-direction: column;
   align-items: center;
 
-  .video__player {
-    width: 50%;
-    min-width: 500px;
+  .video_box {
+    width: 600px;
 
-    video {
+    .video__player {
       width: 100%;
+      //max-width: 600px;
+      object-fit: cover;
+
+      video {
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
 
+  
+
+
   .video__info {
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-
-    // width: 100%;
-    max-width: 850px;
+    width: 100%;
+    max-width: 600px;
+    min-width: 600px;
     margin-top: 25px;
-
     button {
       width: 100px;
       margin-bottom: 25px;
     }
+
+    .video__author {
+      a {
+        color: #db3434;
+      }
+    }
     .video__title,
     .video__views,
     .video__description {
-      text-align: center;
       display: block;
       margin-bottom: 15px;
     }
@@ -43,10 +53,85 @@
       font-size: 16px;
     }
   }
+
   .video__comments {
     margin-top: 25px;
+    text-align: center;
     .video__comment-number {
       font-size: 18px;
     }
+    .add__comment {
+      margin-top: 25px;
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+    .video__comments-list {
+      margin-top: 50px;
+      li {
+        background-color: #3498db;
+        color: white;
+        padding: 15px;
+        border-radius: 20px;
+        border-bottom-left-radius: 0px;
+        &:not(:last-child) {
+          margin-bottom: 15px;
+        }
+      }
+    }
   }
 }
+
+// .video-detail__container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+
+//   .video__player {
+//     width: 50%;
+//     min-width: 500px;
+
+//     video {
+//       width: 100%;
+//     }
+//   }
+
+//   .video__info {
+//     display: inline-block;
+//     vertical-align: middle;
+//     height: 100%;
+
+//     // width: 100%;
+//     max-width: 850px;
+//     margin-top: 25px;
+
+//     button {
+//       width: 100px;
+//       margin-bottom: 25px;
+//     }
+//     .video__title,
+//     .video__views,
+//     .video__description {
+//       text-align: center;
+//       display: block;
+//       margin-bottom: 15px;
+//     }
+//     .video__title {
+//       font-size: 22px;
+//       font-weight: 300;
+//     }
+//     .video__views {
+//       font-size: 14px;
+//     }
+//     .video__description {
+//       font-size: 16px;
+//     }
+//   }
+//   .video__comments {
+//     margin-top: 25px;
+//     .video__comment-number {
+//       font-size: 18px;
+//     }
+//   }
+// }
