@@ -2,46 +2,8 @@
 extends layouts/main
 include mixins/videoPlayer
 
-//- /block content
-    p #{pageTitle}
-    .video__player 
-        video(src=`/${video.fileUrl}`,controls=true,width="640")
-            //- it comes from Video.js Nomadcoder lecture #3.8 //
-    .video__info
-        a(href=routes.editVideo(video.id)) Edit video  
-        h5.video__title= video.title
-        span.video__views=video.views
-        p.video__description=video.description    
-
-    .video__comments  
-        if video.comments.length ==1
-            span.video__comment-number 1 comment
-        else
-            span.video__comment-number #{video.comments.length} comments
-    //- .vidoes
-    //-     each video in videoData
-    //-         +videoBlock({
-    //-             id:video.id,
-    //-             title:video.titile,
-    //-             views:video.views,
-    //-             videoFile:video.fileUrl,
-    //-             description:video.description
-    //-         })
-
-
 block content
-    //- .video__player
-    //-     video(src=`/${video.fileUrl}`)
-    //- .video__info
-    //-     a(href=routes.editVideo(video.id)) Edit video
-    //-     h5.video__title=video.title
-    //-     span.video__views=video.views
-    //-     p.video__description=video.description
-    //- .video__comments
-    //-     if video.comments.length === 1
-    //-         span.video__comment-number 1 comment
-    //-     else
-    //-         span.video__comment-number #{video.comments.length} comments 
+
     .video-detail__container
         //- .video__player
         //-     video(src=`/${video.fileUrl}`,controls=false)
@@ -70,5 +32,21 @@ block content
             if video.comments.length === 1
                 span.video__comment-number 1 comment
             else
-                span.video__comment-number #{video.comments.length} comments
-        
+                span.video__comment-number
+                    span#jsCommentNumber=video.comments.length
+                    |  comments
+            
+
+
+            if loggedUser
+                if video.creator.id === loggedUser.id 
+                    form.add__comment#jsAddComment
+                        input(type="text",placeholder="Add a comment",name="comment")
+            ul.video__comments-list#jsCommentList
+                each comment in video.comments.reverse()
+                    .comment_box
+                        li 
+                            span=comment.text
+                        span
+                            a(href=routes.editVideo(video.id))
+                                button Edit video

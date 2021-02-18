@@ -1,4 +1,5 @@
 const videoContainer = document.getElementById("jsVideoPlayer");
+const videoplaypause = document.querySelector(".playpause");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
 const playBtn = document.getElementById("jsPlayButton");
 const volumeBtn = document.getElementById("jsVolumeBtn");
@@ -12,13 +13,28 @@ const ranges = player.querySelectorAll('.player__slider');
 const progress = player.querySelector('.progress');
 const progressBar = document.querySelector('.progress__filled');
 
+const registerView = () => {
+  const videoId = window.location.href.split("/videos/")[1];
+  fetch(`/api/${videoId}/view`, {
+    method: "POST"
+  });
+};
+
+
 function handlePlayClick() {
   if (videoPlayer.paused) {
     videoPlayer.play();
+    
+    videoplaypause.innerHTML = "";
+    
+    
     playBtn.innerHTML = '<i class="fas fa-pause"></i>';
   } else {
     videoPlayer.pause();
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    videoplaypause.innerHTML = "❚❚";
+    videoplaypause.innerHTML = "❚❚";
+
   }
 }
 
@@ -78,6 +94,7 @@ function goFullScreen() {
     videoContainer.msRequestFullscreen();
   }
   fullScrnBtn.innerHTML = '<i class="fas fa-compress"></i>';
+  videoplaypause.innerHTML =  '<div class="progress"><div class="progress__filled" style="flex-basis: 73.845%;"></div></div>'
   fullScrnBtn.removeEventListener("click", goFullScreen);
   fullScrnBtn.addEventListener("click", exitFullScreen);
 }
@@ -105,6 +122,7 @@ function getCurrentTime() {
 }
 
 function handleEnded() {
+  registerView();
   videoPlayer.currentTime = 0;
   playBtn.innerHTML = '<i class="fas fa-play"></i>';
 }
@@ -117,47 +135,50 @@ function setTotalTime() {
 
 
 
- function handleRangeUpdate() {
-   videoPlayer[this.name] = this.value;
- }
+function handleRangeUpdate() {
+  videoPlayer[this.name] = this.value;
+}
 
- function handleProgress() {
-   const percent = (videoPlayer.currentTime / videoPlayer.duration) * 100;
-   progressBar.style.flexBasis = `${percent}%`;
- }
+function handleProgress() {
+  const percent = (videoPlayer.currentTime / videoPlayer.duration) * 100;
+  progressBar.style.flexBasis = `${percent}%`;
+}
 
 
- function scrub(e) {
-   const scrubTime = (e.offsetX / progress.offsetWidth) * videoPlayer.duration;
-   videoPlayer.currentTime = scrubTime;
+function scrub(e) {
+  const scrubTime = (e.offsetX / progress.offsetWidth) * videoPlayer.duration;
+  videoPlayer.currentTime = scrubTime;
 }
 /* Hook up the event listeners */
 
 
 
- function handdleProgressBar() {
+function handdleProgressBar() {
 
- videoPlayer.addEventListener('timeupdate', handleProgress);
- ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
- ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+  videoPlayer.addEventListener('timeupdate', handleProgress);
+  ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+  ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
 
 
 
- let mousedown = false;   //프로그레스 바에서 마우스 떼고 붙일때 쓰는 함수 움직임 제어
- progress.addEventListener('click', scrub);
- progress.addEventListener('mousemove', e => { mousedown && scrub(e);});
- progress.addEventListener('mousedown', () => mousedown = true);
- progress.addEventListener('mouseup', () => mousedown = false);
+  let mousedown = false;   //프로그레스 바에서 마우스 떼고 붙일때 쓰는 함수 움직임 제어
+  progress.addEventListener('click', scrub);
+  progress.addEventListener('mousemove', e => { mousedown && scrub(e); });
+  progress.addEventListener('mousedown', () => mousedown = true);
+  progress.addEventListener('mouseup', () => mousedown = false);
 
- }
+}
+
+
 
 
 
 
 
 function init() {
-  
+
   videoPlayer.volume = 0.5;
+  videoPlayer.addEventListener("click", handlePlayClick);;
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   fullScrnBtn.addEventListener("click", goFullScreen);
@@ -165,6 +186,7 @@ function init() {
   videoPlayer.addEventListener("timeupdate", getCurrentTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRange.addEventListener("input", handleDrag);
+  
   handdleProgressBar();
 }
 
@@ -174,9 +196,9 @@ function init() {
 
 
 if (videoContainer) {
-  
+
   init();
-  setTimeout(setTotalTime,100);
+  setTimeout(setTotalTime, 100);
 }
 
 

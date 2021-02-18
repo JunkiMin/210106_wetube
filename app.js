@@ -15,7 +15,7 @@ import mongoose from "mongoose"
  import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
-
+import apiRouter from "./routers/apiRouter";
 
 
 import "./passport" //얘는 내가만든 js 불러들이는거
@@ -53,6 +53,7 @@ app.use(localsMiddleWare);
 app.use(routes.users,userRouter);    //app.use("/user",userRouter);
 app.use(routes.videos,videoRouter); //app.use("/user",userRouter);
 app.use(routes.home,globalRouter); 
+app.use(routes.api,apiRouter);
 
 //aplication  get("directory(위치)","보낼놈(주로 CSS html임")
 

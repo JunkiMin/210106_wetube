@@ -2,7 +2,7 @@
   position: relative;
   &:hover {
     .videoPlayer__controls {
-      opacity: 1;
+      opacity: 0;
     }
   }
   video {
@@ -14,7 +14,7 @@
 
   
   .videoPlayer__controls {
-    opacity: 0;
+    opacity: 1;
     //  서서히 컨트롤러 나오게 나오게 도와주는 기능
 
 
@@ -34,72 +34,87 @@
     
     font-size: 16px;
 
-    .progress:nth-child(1){
-      grid-column:1/4;
-    }
 
 
 
-    .videoPlayer__column:nth-child(2) {
-      display: flex;
-      justify-self: start;
-      align-items: center;
-      & > span:nth-child(2) {
-        margin-right: 10px;
-      }
-    }
-    .videoPlayer__column:last-child {
-      justify-self: end;
-    }
-    .videoPlayer__column:nth-child(3) {
-      justify-self: center;
-    }
     i {
       font-size: 25px;
       cursor: pointer;
     }
+
+    
+    
+  }
+
+
+
+}
+
+
+.videoPlayer__column_controls{
+
+  display: flex;
+  align-items: center;
+  //justify-content: space-between;
+  font-size: 30px;
+
+  background-color: rgb(194, 190, 190);
+
+  #jsPlayButton{
+    margin-right: 10px;
+  }
+
+  #jsVolume{
+    width: 100px;
+  }
+
+  #jsVolumeBtn{
+    width: 30px;
+  }
+
+}
+.videoPlayer__column{
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  #timebox{
+    font-size: 20px;
   }
 }
 
-#jsVolume,
-.videoPlayer__volume {
-  position: absolute;
-  padding: 0;
-  opacity: 1;
-  top: -100px;
-  left: -25px;
-  transform: rotate(-90deg);
-  z-index: 10;
-  width: 80px;
-  height: 100px;
 
-  input {
-    background-color: rgba(0, 0, 0, 0.7);
-    &::-webkit-slider-runnable-track {
-      background-color: $grey;
-      height: 5px;
-    }
-    &::-webkit-slider-thumb {
-      all: unset;
-      background-color: $red;
-      height: 10px;
-      width: 15px;
-      border-radius: 50%;
-      position: relative;
-      top: -5px;
-    }
-  }
-}
-.videoPlayer__column:last-child {
-  justify-self: end;
-}
-.videoPlayer__column:nth-child(3) {
-  justify-self: center;
+.videoPlayer__column_controls span:nth-child(4){
+  margin-left: auto;
+  //background-color: red;
 }
 
-#jsVolumeBtn{
-  margin-right: 5px;
+
+
+.playpause {
+  background-repeat:no-repeat;
+  width:0%;
+  height:0%;
+  position:absolute;
+  left:0%;
+  right:0%;
+  top:0%;
+  bottom:0%;
+  margin:auto;
+  background-size:contain;
+  background-position: center;
+  font-size: xx-large;
+  
 }
+
+
+// .videoPlayer__column:last-child {
+//   justify-self: end;
+// }
+// .videoPlayer__column:nth-child(3) {
+//   justify-self: center;
+// }
+
+
 
 // opacity: 0;
 // transition: opacity 0.4s linear;
@@ -193,7 +208,7 @@
   width: 50%;
   background: #ffc600;
   flex: 0;
-  flex-basis: 50%;
+  flex-basis: 0%;
 }
 
 /* unholy css to style input type="range" */

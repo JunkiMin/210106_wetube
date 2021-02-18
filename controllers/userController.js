@@ -5,13 +5,13 @@ import route from "../routes";
 export const getJoin = (req, res) => res.render("join", { pageTitle: "join" });
 
 export const postJoin = async (req, res, next) => { //next를 넣어줌으로서 미들웨어
-  console.log("1 console log req.body  == > ", req.body);
+  //console.log("1 console log req.body  == > ", req.body);
 
   const {
     body: { name, email, password, password2 }
   } = req;
 
-  console.log("2 console log req.body  == > ", req.body);
+  //console.log("2 console log req.body  == > ", req.body);
 
   if (password !== password2) {
 
@@ -24,9 +24,9 @@ export const postJoin = async (req, res, next) => { //next를 넣어줌으로서
 
       const user = await User({ name, email }); // 한낱 함수입니다. 객체를 인자로 받는.
 
-      console.log("user===> ", user); // pug 에서 받은 name과 email값을 가지고있는 함수
+      //console.log("user===> ", user); // pug 에서 받은 name과 email값을 가지고있는 함수
       await User.register(user, password);
-      console.log("user===> ", user); // 유저 패스워드 정보가 암화화 해서 들어감 salt hash
+      //console.log("user===> ", user); // 유저 패스워드 정보가 암화화 해서 들어감 salt hash
       next();
     } catch (error) {
       console.log(error)
@@ -81,10 +81,7 @@ export const postEditProfile = async (req, res) => {
 
 
 
-
-
-
-  console.log("req.file===>", req.file)
+  // console.log("req.file===>", req.file)
   try {
 
     await User.findByIdAndUpdate(req.user.id, {
@@ -132,9 +129,9 @@ export const userDetail = async (req, res) => {
   } = req;
   try {
     const user = await User.findById(id).populate("videos");
-    console.log("user in userDetail====>> \n",user)
+    console.log("user in userDetail====>> \n", user)
     res.render("userDetail", { pageTitle: "User Detail", user });
-    
+
   } catch (error) {
     req.flash("error", "User not found");
     res.redirect(route.home);

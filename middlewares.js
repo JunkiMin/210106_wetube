@@ -27,7 +27,7 @@ export const localsMiddleWare = (req,res,next) => {
     res.locals.routes = route;
     res.locals.test= "this is test text for localsMiddleWare"
     res.locals.loggedUser = req.user || null;
-    console.log("V========middleweare req.user : ======V \n " ,req.user)
+   // console.log("V========middleweare req.user : ======V \n " ,req.user)
     //console.log("V========middleweare req : ======V \n " ,req.file)
     console.log("localmiddleware");
     next();

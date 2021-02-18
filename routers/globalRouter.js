@@ -1,6 +1,6 @@
 import express from "express";
 import routes from "../routes";
-import {home,search,videos,upload,videoDetail,editVideo,deleteVideo} from "../controllers/videoController";
+import {home,search,videos,upload,videoDetail,editVideo,deleteVideo,deleteComment} from "../controllers/videoController";
 import {getMe,getJoin,postJoin,getLogin,postLogin,logout} from "../controllers/userController";
 import { onlyPublic,onlyPrivate } from "../middlewares";
 
